@@ -1,0 +1,78 @@
+<div class="full-height">
+  <div class="row full-height">
+    <div class="col-md-4 col-sm-12" style="background-image: url(assets/img/app/media/img/bg/bg-4.jpg);">
+      <div class="container">
+        <div class="row logo">
+          <img src="assets/img/app/media/img/logos/logo-4.png">
+        </div>
+        <div class="row center" style="height: 700px;">
+
+        </div>
+        <div class="row bottom">
+          <div class="col-sm-6">
+            <a href="#" style="color: white;">© 2019 Pipapo</a>
+          </div>
+          <div class="col-sm-2">
+            <a href="#" style="color: white;">privacy</a>
+          </div>
+          <div class="col-sm-2">
+            <a href="#" style="color: white;">Legal</a>
+          </div>
+          <div class="col-sm-2">
+            <a href="#" style="color: white;">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8" style="align-content: center;">
+      <div class="container" style="height: 30%;">
+
+      </div>
+      <div class="container full-height">
+        <div class="row">
+          <div class="col-md-3">
+
+          </div>
+          <div class="col-md-6">
+            <h3 style="text-align:center">Login Account</h3>
+            <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Email address" formControlName="email" required>
+              </mat-form-field>
+
+              <!-- <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+                    <div *ngIf="formControls.email.errors.required">Email is required</div>
+                  </div> -->
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+              </mat-form-field>
+
+              <!-- <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+                    <div *ngIf="formControls.password.errors.required">Password is required</div>
+                  </div> -->
+              <!-- <mat-form-field class="example-full-width"> -->
+              <div class="row" style="align-items: center;">
+                <div class="col-md-6">
+                  <a href="#"><span>Forgot Password</span></a>
+                </div>
+                <div class="col-md-6">
+                  <button data-toggle="tooltip" title="
+                    Sign In" mat-raised-button type="submit" class="btn btn-primary pull-right">Sign In</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

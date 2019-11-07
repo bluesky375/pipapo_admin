@@ -1,0 +1,19 @@
+.example-card {
+    max-width: 600px;
+    position: absolute; 
+    top: 41px; 
+    left: -231px; 
+    will-change: top, left;
+    
+  }
+  
+  .example-header-image {
+    
+    background-image: url('assets/img/app/media/img/users/user4.jpg');
+    background-size: cover;
+  }
+
+  .example-card-header {
+    // background-image: url('assets/img/app/media/img/misc/user_profile_bg.jpg');
+    background-size: cover;
+  }

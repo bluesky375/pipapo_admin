@@ -1,0 +1,192 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- <div class="col-md-12"> -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Users</h4>
+        </div>
+        <div class="clearfix" style="height: 1px; background-color: lightgrey;"></div>
+
+        <div class="card-body">
+          <div>
+            <table mat-table [dataSource]="dataSource" style="width: 100%;">
+
+              <ng-container matColumnDef="full_name">
+                <th mat-header-cell *matHeaderCellDef> Full name </th>
+                <td mat-cell *matCellDef="let element"> {{element.first_name + ' '+ element.surname}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="gender">
+                <th mat-header-cell *matHeaderCellDef> Gender </th>
+                <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Address </th>
+                <td mat-cell *matCellDef="let element"> {{element.street}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="active_status">
+                <th mat-header-cell *matHeaderCellDef> Active status </th>
+                <td mat-cell *matCellDef="let element"> {{element.active == 1 ? 'Active': 'Deactive'}} </td>
+              </ng-container>
+              <!-- Actions Column -->
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element" style="width: 100px;">
+                  <button mat-icon-button color="primary" matTooltip="Edit User Active" data-toggle="modal"
+                    data-target="#editUser" class="mat-icon-button mat-primary" (click)="onSetUserId(element.id)">
+                    <mat-icon class="mat-18">create</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header modal-custom-header">
+        <h4>Set User Active Status</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="" style="margin-top: 20px;">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+              <h4 style="font-weight: bold;"> 1. Personal Details</h4>
+            </div>
+          </div>
+
+          <div class="form-horizontal">
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Full Name:</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="first_name+' '+surname" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Occupation</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="occupation" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Company Name</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="company" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Phone No.</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="phone" readonly>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="" style="margin-top: 20px;">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+              <h4 style="font-weight: bold;"> 2. Address</h4>
+            </div>
+          </div>
+          <div class="form-horizontal">
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Address</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="street" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">City</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="city" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">State</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="state" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Post code</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="post_code" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="" style="margin-top: 20px;">
+          <div class="row">
+            <div class="col-sm-offset-2 col-md-10">
+              <h4 style="font-weight: bold;"> 3. Social Links</h4>
+            </div>
+          </div>
+          <div class="form-horizontal">
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Linkedin</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="linkedin" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Facebook</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="facebook" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Twitter</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="twitter" readonly>
+              </div>
+            </div>
+            <div class="row user-info-input-group">
+              <div class="col-sm-3 user-info-title">Instagram</div>
+              <div class="col-sm-8 user-info-input">
+                <input type="text" [(ngModel)]="instagram" readonly>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <mat-checkbox [(ngModel)]="active">Active</mat-checkbox>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end;">
+          <div class="btn-container">
+            <button mat-raised-button data-dismiss="modal" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button (click)="onSave()" data-dismiss="modal" color="primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

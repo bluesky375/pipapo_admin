@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Imprint</h4>
+                    <button data-toggle="tooltip" title="Create new image" mat-raised-button type="submit"
+                        class="btn btn-primary pull-right" data-toggle="modal" data-target="#editModal"
+                        (click)="onOpenEditModal()">{{title}}</button>
+                </div>
+                <div class="clearfix" style="height: 1px; background-color: lightgrey;"></div>
+                <div class="card-body">
+                    <mat-tab-group class="mat-tab-group mat-primary"
+                        (selectedIndexChange)="onSelectedIndexChange($event)">
+                        <mat-tab label="Imprint">
+                            <div  style="padding: 30px 0px;" #imprint></div>
+                        </mat-tab>
+                        <mat-tab label="Privacy Policy">
+                            <div style="padding: 30px ;" #privacy></div>
+                        </mat-tab>
+                        <mat-tab label="Revocation Policy">
+                            <div  style="padding: 30px ;" #revocation></div>
+                        </mat-tab>
+                        <mat-tab label="Info">
+                            <div  style="padding: 30px;" #info></div>
+                        </mat-tab>
+                        <mat-tab label="Help">
+                            <div  style="padding: 30px;" #help></div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-custom-header">
+                <h4>{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 10px;">
+                    <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+                </div>
+                <div style="display: flex; justify-content: flex-end; ">
+                    <div class="btn-container">
+                        <button mat-raised-button data-dismiss="modal">Cancel</button>
+                        <button mat-raised-button (click)="onSave()" data-dismiss="modal" color="primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

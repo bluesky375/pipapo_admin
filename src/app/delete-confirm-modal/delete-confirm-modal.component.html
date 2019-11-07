@@ -1,0 +1,9 @@
+<div >  
+  <div mat-dialog-content>
+    <p>Are you sure to permanently delect this {{data.kind}}?</p> 
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button  (click)="onDeleteClick()" cdkFocusInitial>Delete</button>
+  </div>
+</div>

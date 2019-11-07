@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg  navbar-absolute">
+    <div class="container-fluid">
+
+        <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+           
+            <ul class="navbar-nav">               
+                <li class="nav-item">
+                    <div  class="nav-link ">
+                        <div class="dropdown show-dropdown show">
+                            <a href="#" data-toggle="dropdown" aria-expanded="false">
+                                <div mat-card-avatar class="nav-link example-header-image"></div>
+                            </a>
+                           
+                            <mat-card class="example-card dropdown-menu show custom-dropdown hiding" x-placement="bottom-start">
+                                <mat-card-header class="example-card-header p-4">                                   
+                                    <mat-card-title>Mark andre</mat-card-title>
+                                    <mat-card-subtitle>mark.andre@gmail.com</mat-card-subtitle>
+                                </mat-card-header>
+                
+                                <mat-card-content>
+                                    <mat-list>
+                                        <mat-list-item>
+                                            <mat-icon matListIcon>person_pin</mat-icon>
+                                            <h3 matLine> My Profile </h3>
+                                        </mat-list-item>
+                                    </mat-list>
+                                    <mat-list>
+                                        <mat-list-item>
+                                            <mat-icon matListIcon>all_out</mat-icon>
+                                            <h3 matLine> Activity </h3>
+                
+                                        </mat-list-item>
+                                    </mat-list>
+                
+                                    <mat-list>
+                                        <mat-list-item>
+                                            <mat-icon matListIcon>message</mat-icon>
+                                            <h3 matLine> Messages </h3>
+                
+                                        </mat-list-item>
+                                    </mat-list>
+                                    <mat-list>
+                                        <mat-list-item>
+                                            <mat-icon matListIcon>help</mat-icon>
+                                            <h3 matLine> FAQ </h3>
+                
+                                        </mat-list-item>
+                                    </mat-list>
+                                    <mat-list>
+                                        <mat-list-item>
+                                            <mat-icon matListIcon>group_work</mat-icon>
+                                            <h3 matLine> Support </h3>
+                
+                                        </mat-list-item>
+                                    </mat-list>
+                                    <li class="button-container">
+                                        <div>
+                                            <button class="btn btn-default btn-block btn-fill" data-toggle="modal" data-target="#buy"
+                                                (click)="logout()">
+                                                Logout
+                                            </button>
+                                        </div>
+                                    </li>
+                                </mat-card-content>
+                
+                            </mat-card>                        
+                        </div>
+                    </div>
+                </li>
+           
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,117 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-md-12"> -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Bonus Points</h4>
+                    <button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="onSetBonusId(0)"
+                        data-toggle="modal" data-target="#editBonusModal">New Bonus</button>
+                </div>
+                <div class="clearfix" style="height: 1px; background-color: lightgrey;"></div>
+
+                <div class="card-body">
+                    <div>
+                        <table mat-table [dataSource]="dataSource">
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="title">
+                                <th mat-header-cell *matHeaderCellDef> Title </th>
+                                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                            </ng-container>
+
+                            <!-- Description Column -->
+                            <ng-container matColumnDef="description">
+                                <th mat-header-cell *matHeaderCellDef> Description </th>
+                                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                            </ng-container>
+
+                            <!-- Price Column -->
+                            <ng-container matColumnDef="points">
+                                <th mat-header-cell *matHeaderCellDef> Points </th>
+                                <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+                            </ng-container>
+
+                            <!-- Plates Column -->
+                            <ng-container matColumnDef="plates">
+                                <th mat-header-cell *matHeaderCellDef> Plates </th>
+                                <td mat-cell *matCellDef="let element"> {{element.plates}} </td>
+                            </ng-container>
+
+                            <!-- Enabled Column -->
+                            <ng-container matColumnDef="enabled">
+                                <th mat-header-cell *matHeaderCellDef> Enabled </th>
+                                <td mat-cell *matCellDef="let element"> {{element.enabled == 1 ? 'enabled': 'disabled'}} </td>
+                            </ng-container>
+
+                            <!-- Actions Column -->
+                            <ng-container matColumnDef="actions">
+                                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                                <td mat-cell *matCellDef="let element">{{element.actions}}
+                                    <button mat-icon-button color="primary" matTooltip="Edit bonus" data-toggle="modal"
+                                        data-target="#editBonusModal" class="mat-icon-button mat-primary"
+                                        (click)="onSetBonusId(element.id)">
+                                        <mat-icon class="mat-18">create</mat-icon>
+                                    </button>
+                                    <button mat-icon-button color="warn" matTooltip="Delete bonus"
+                                        class="mat-icon-button mat-warn">
+                                        <mat-icon class="mat-18" (click)="openModal(element.id, 'bonus')">delete</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editBonusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-custom-header">
+                <h4>{{editBonusModalTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 20px;">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Enter title" required [(ngModel)]="bonus_title">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-12">
+                        <mat-form-field class="example-full-width">
+                            <textarea matInput placeholder="Enter Description" rows="4"
+                                [(ngModel)]="bonus_description"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6" style="margin-top: 20px;">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Enter points" type="number" required [(ngModel)]="bonus_points">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6" style="margin-top: 20px;">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Enter plates" type="number" required [(ngModel)]="bonus_plates">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6" style="margin-top: 20px;">
+                        <mat-checkbox  [(ngModel)]="bonus_enabled">Enabled</mat-checkbox>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                    <div class="btn-container">
+                        <button mat-raised-button data-dismiss="modal" (click)="onCancel()">Cancel</button>
+                        <button mat-raised-button (click)="onSave()" data-dismiss="modal" color="primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

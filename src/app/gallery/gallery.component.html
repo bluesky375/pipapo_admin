@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Gallery list</h4>
+                <button data-toggle="tooltip" title="Create new image" type="submit" class="btn btn-primary pull-right"
+                    data-toggle="modal" data-target="#editImageModal" (click)="setGalleryIdForEdit(0)">New
+                    image</button>
+            </div>
+            <div class="clearfix" style="height: 1px; background-color: lightgrey;"></div>
+            <div class="card-body gallery-container">
+                <div style="width: 310px; height: 220px; margin: 10px;" class="gallery-item" *ngFor="let item of imageList">
+                    <img *ngIf="item.path" class="img_item" [src]="[base_url+'/public/images/'+item.path]"
+                        data-toggle="modal" data-target="#editImageModal" (click)="setGalleryIdForEdit(item.id)">
+                    <div class="btn_container" style="position: absolute; top: 4px; left: 4px;">
+                        <button mat-icon-button matTooltip="Delete selected picture" class="mat-icon-button mat-warn">
+                            <span class="mat-button-wrapper">
+                                <mat-icon class="mat-icon materials-icons" role="img" aria-hidden="true"
+                                    (click)="openModal(item.id, 'gallery')">delete
+                                </mat-icon>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-custom-header">
+                <h4>{{editImageModalTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6" style="margin-top: 20px;">
+                        <input type="file" (change)="onImageFileSelected($event)" #ImageInput>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                    <div class="btn-container">
+                        <button mat-raised-button data-dismiss="modal" (click)="onCancel()">Cancel</button>
+                        <button mat-raised-button (click)="onSave()" data-dismiss="modal" color="primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
